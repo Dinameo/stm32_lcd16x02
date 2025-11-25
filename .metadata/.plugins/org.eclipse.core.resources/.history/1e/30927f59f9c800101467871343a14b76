@@ -1,0 +1,35 @@
+#ifndef __MPU6050_H
+#define __MPU6050_H
+
+#include "main.h"
+
+/*
+- Fast mode 400kHz
+- Duty cycle Tlow/Thigh = 2
+- MPU6050v
+*/
+
+#define MPU6050_TIME_OUT	1000
+#define MPU6050_ADDR_1		0x68
+#define MPU6050_ADDR_2		0x69
+
+
+// MPU6050 REGISTER
+#define MPU6050_WHO_AM_I		0x75
+#define MPU6050_PWR_MGMT_1	0x6B
+#define MPU6050_SMPLRT_DIV	0x19
+
+
+
+typedef struct
+{
+	I2C_HandleTypeDef* i2c;
+	uint8_t addr;
+} MPU6050_t;
+
+void MPU6050_Init(MPU6050_t* mpu6050);
+
+
+
+
+#endif

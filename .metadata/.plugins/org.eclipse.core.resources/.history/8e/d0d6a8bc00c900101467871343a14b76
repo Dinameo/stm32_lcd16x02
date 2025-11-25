@@ -1,0 +1,31 @@
+#include "main.h"
+#include "mpu6050.h"
+
+
+
+
+
+uint8_t MPU6050_Init(MPU6050_t* mpu6050)
+{
+	HAL_Delay(100); // On dinh sau khi cap nguon
+	uint8_t check;
+	if(HAL_I2C_Mem_Read(mpu6050->i2c, mpu6050->addr, MPU6050_WHO_AM_I, 1, &check, 1, MPU6050_TIME_OUT) == HAL_OK)
+	{
+		uint8_t data = 0x01;	// Thoat sleep (Bit 6 = 0), chọn PLL voi X-axis Gryo làm nguồn clock (CLKSEL = 001)
+		HAL_I2C_Mem_Write(mpu6050->i2c, mpu6050->addr, MPU6050_PWR_MGMT_1, 1, &data, 1, MPU6050_TIME_OUT);
+
+		data = 0x07;	// Set sample rate = 1kHz/(7+1) = 125Hz
+		HAL_I2C_Mem_Write(mpu6050->i2c, mpu6050->addr, MPU6050_SMPLRT_DIV, 1, &data, 1,  MPU6050_TIME_OUT);
+		HAL_Delay(100); // PLL lock
+
+		data = 0x00;	// Full scale range cua con quay hoi chuyen (Gyroscope) +-250o/s
+		HAL_I2C_Mem_Write(mpu6050->i2c, mpu6050->addr, MPU6050_GYRO_CONFIG, 1, &data, 1,  MPU6050_TIME_OUT);
+
+		data = 0x00;	// Full scale range cua gia toc ke (Accelerometer) +-2g
+		HAL_I2C_Mem_Write(mpu6050->i2c, mpu6050->addr, MPU6050_ACCEL_CONFIG, 1, &data, 1,  MPU6050_TIME_OUT);
+
+		data = 0x01;	// Digital Low Pass Filter: Bandwidth 184 (Acc), 188 (Gyro); delay 2ms (Acc), 1ms (Gyro)
+		HAL_I2C_Mem_Write(mpu6050->i2c, mpu6050->addr, MPU6050_CONFIG, 1, &data, 1,  MPU6050_TIME_OUT);
+	}
+	return 0;
+}

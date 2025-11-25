@@ -1,0 +1,13 @@
+21:53:31 **** Build of configuration Release for project mpu6050_driver ****
+make -j16 all 
+arm-none-eabi-gcc -o "mpu6050_driver.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\Documents\NCKH\TASK 6\mpu6050_driver\stm32_mpu6050\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mpu6050_driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: mpu6050_driver.elf
+ 
+arm-none-eabi-size  mpu6050_driver.elf 
+arm-none-eabi-objdump -h -S mpu6050_driver.elf  > "mpu6050_driver.list"
+   text	   data	    bss	    dec	    hex	filename
+   9112	     60	   1652	  10824	   2a48	mpu6050_driver.elf
+Finished building: default.size.stdout
+ 
+Finished building: mpu6050_driver.list
+ 

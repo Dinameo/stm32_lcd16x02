@@ -1,0 +1,10 @@
+#include "main.h"
+#include "mpu6050.h"
+
+
+
+
+void MPU6050_Init()
+{
+
+}

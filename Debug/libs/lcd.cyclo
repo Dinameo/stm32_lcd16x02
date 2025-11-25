@@ -1,0 +1,16 @@
+../libs/lcd.c:6:6:DWT_Init	1
+../libs/lcd.c:12:6:DWT_Delay_us	2
+../libs/lcd.c:19:6:LCD_Enable	1
+../libs/lcd.c:27:6:LCD_Send_4bit	2
+../libs/lcd.c:33:6:LCD_Send_Byte	2
+../libs/lcd.c:40:6:LCD_Put	5
+../libs/lcd.c:54:6:LCD_Put_Char	1
+../libs/lcd.c:62:6:LCD_Put_String	2
+../libs/lcd.c:71:6:LCD_Put_Int	4
+../libs/lcd.c:98:6:LCD_Put_Command	1
+../libs/lcd.c:105:6:LCD_Clear_Display	1
+../libs/lcd.c:109:6:LCD_Return_Home	1
+../libs/lcd.c:113:6:LCD_Init_4bit	1
+../libs/lcd.c:130:6:LCD_Init_8bit	1
+../libs/lcd.c:147:6:LCD_Goto_XY	2
+../libs/lcd.c:155:6:LCD_Init	3

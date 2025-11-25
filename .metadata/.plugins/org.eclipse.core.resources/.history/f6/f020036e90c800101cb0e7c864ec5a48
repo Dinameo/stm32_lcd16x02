@@ -1,0 +1,24 @@
+#ifndef __MPU6050_H
+#define __MPU6050_H
+
+#include "main.h"
+
+/*
+- Fast mode 400kHz
+- Duty cycle Tlow/Thigh = 2
+- MPU6050
+*/
+
+
+typedef struct
+{
+	I2C_HandleTypeDef* i2c;
+	uint8_t addr;
+}
+
+void MPU6050_Init();
+
+
+
+
+#endif

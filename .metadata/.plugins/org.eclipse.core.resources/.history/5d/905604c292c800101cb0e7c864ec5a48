@@ -1,0 +1,15 @@
+#include "main.h"
+#include "mpu6050.h"
+
+
+
+
+void MPU6050_Init(MPU6050_t* mpu6050)
+{
+	uint8_t data = 0x01;	// Thoat sleep (Bit 6 = 0), chọn PLL voi X-axis Gryo làm nguồn clock (CLKSEL = 001)
+	HAL_I2C_Mem_Write(mpu6050->i2c, mpu6050->addr, MPU6050_PWR_MGMT_1, 1, &data, 1, MPU6050_TIME_OUT);
+
+	data = 0x07;	// Sample Rate Divider 7
+	HAL_I2C_Mem_Write(mpu6050->i2c, mpu6050->addr, MPUMPU6050_SMPLRT_DIV, 1, &data, 1, MPU6050_TIME_OUT);
+
+}
