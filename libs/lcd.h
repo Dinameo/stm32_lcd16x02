@@ -29,8 +29,6 @@
 #define LCD_DDRAM_ROW2_OFFS		0x40
 
 
-
-
 typedef struct
 {
 	GPIO_TypeDef*	port;
@@ -83,6 +81,6 @@ void LCD_Init_8bit(LCD_t* lcd);
 void LCD_Init(LCD_t* lcd);
 void LCD_Goto_XY(LCD_t* lcd, uint8_t x, uint8_t y);
 void LCD_Put_Int(LCD_t* lcd, int32_t num);
-
+void LCD_Put_Float(LCD_t* lcd, float num, uint8_t prec);
 
 #endif

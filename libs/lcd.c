@@ -94,6 +94,32 @@ void LCD_Put_Int(LCD_t* lcd, int32_t num)
 	}
 }
 
+void LCD_Put_Float(LCD_t* lcd, float num, uint8_t prec)
+{
+	if(num < 0)
+	{
+		LCD_Put_Char(lcd, '-');
+		num = -num;
+	}
+	int32_t frac_multiplier = 1;
+	for(int8_t i = 0; i < prec; i++)
+		frac_multiplier *= 10;
+	num = (num + 0.5f/frac_multiplier);
+	uint32_t int_part = (uint32_t) num;
+	LCD_Put_Int(lcd, int_part);
+	if (prec == 0) return;
+
+	LCD_Put_Char(lcd, '.');
+	int32_t frac_part = (num - int_part)*frac_multiplier;
+	for(int8_t i = 0; i < prec; i++)
+	{
+		frac_multiplier /= 10;
+		uint8_t digit = frac_part / frac_multiplier;
+		LCD_Put_Char(lcd, digit + '0');
+		frac_part %= frac_multiplier;
+
+	}
+}
 
 void LCD_Put_Command(LCD_t* lcd, uint8_t cmd)
 {

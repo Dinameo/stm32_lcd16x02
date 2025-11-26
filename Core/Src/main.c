@@ -89,28 +89,8 @@ int main(void) {
 	/* USER CODE BEGIN 2 */
 	LCD_Init(&lcd);
 
-	LCD_Clear_Display(&lcd);
-	LCD_Put_String(&lcd, (uint8_t*) "Hello world!");
-	HAL_Delay(1000);
+	LCD_Put_Float(&lcd, -0.009, 2);
 
-	LCD_Clear_Display(&lcd);
-	LCD_Put_Int(&lcd, 1);
-	HAL_Delay(1000);
-
-	LCD_Clear_Display(&lcd);
-	LCD_Put_Int(&lcd, -1);
-	HAL_Delay(1000);
-
-	LCD_Clear_Display(&lcd);
-	LCD_Put_Int(&lcd, 123456789);
-	HAL_Delay(1000);
-
-	LCD_Clear_Display(&lcd);
-	LCD_Put_Int(&lcd, -123456789);
-	HAL_Delay(1000);
-
-	LCD_Clear_Display(&lcd);
-	LCD_Put_Int(&lcd, -122234678);
 	HAL_Delay(1000);
 
 	/* USER CODE END 2 */
